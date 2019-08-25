@@ -1,0 +1,42 @@
+<script src='assets/lib/jquery/dist/jquery.js'></script>
+<script src='assets/lib/patternLock/patternLock.js'></script>
+
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div>
+    <div class="ILS_label-row" [ngClass]="!_showLockScreen ?  'ILS_lock-hidden' : ''">
+      {{passcodeLabel}}
+    </div>
+    <div class="ILS_circles-row" [ngClass]="passcodeWrong ?  'ILS_shake' : ''">
+      <div class="ILS_circle" [ngClass]=" enteredPasscode.length>0 ? 'ILS_full' : ''"></div>
+      <div class="ILS_circle" [ngClass]=" enteredPasscode.length>1 ? 'ILS_full' : ''"></div>
+      <div class="ILS_circle" [ngClass]=" enteredPasscode.length>2 ? 'ILS_full' : ''"></div>
+      <div class="ILS_circle" [ngClass]=" enteredPasscode.length>3 ? 'ILS_full' : ''"></div>
+    </div>
+    <div class="ILS_numbers-row">
+      <div (click)="digit(1)" class="ILS_digit">1</div>
+      <div (click)="digit(2)" class="ILS_digit">2</div>
+      <div (click)="digit(3)" class="ILS_digit">3</div>
+    </div>
+    <div class="ILS_numbers-row">
+      <div (click)="digit(4)" class="ILS_digit">4</div>
+      <div (click)="digit(5)" class="ILS_digit">5</div>
+      <div (click)="digit(6)" class="ILS_digit">6</div>
+    </div>
+    <div class="ILS_numbers-row">
+      <div (click)="digit(7)" class="ILS_digit">7</div>
+      <div (click)="digit(8)" class="ILS_digit">8</div>
+      <div (click)="digit(9)" class="ILS_digit">9</div>
+    </div>
+    <div class="ILS_numbers-row">
+      <div *ngIf="ACDelbuttons" (click)="allClear()" class="ILS_digit ILS_ac">AC</div>
+      <div (click)="digit(0)" class="ILS_digit">0</div>
+      <div *ngIf="ACDelbuttons" (click)="remove()" class="ILS_digit ILS_del">DEL</div>
+    </div>
+  </div>
+</ion-content>
